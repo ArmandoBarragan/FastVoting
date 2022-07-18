@@ -1,12 +1,9 @@
-import environ
+import os
 
-# Environment setup
-env = environ.Env()
-environ.Env.read_env()
-
-HOST = env.str('HOST', default='0.0.0.0')
-PORT = env.str('PORT', default='8000')
-DEBUG = env.bool('DEBUG', default=False)
+env = os.environ
+HOST = env.get('HOST')
+PORT = env.get('PORT')
+DEBUG = env.get('DEBUG')
 
 # Secret key
-SECRET_KEY = env.str('SECRET_KEY', default='SECRET_KJHANFNBJINASOFJIDASIOJDF')
+SECRET_KEY = env.get('SECRET_KEY')

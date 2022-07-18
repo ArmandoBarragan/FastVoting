@@ -9,4 +9,3 @@ for usage of my reading club, where we vote for new books to read after finishin
 3. Create unit and integration tests.
 4. Dockerize.
 5. Database connection.
-6. 
