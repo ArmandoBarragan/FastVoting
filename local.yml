@@ -4,9 +4,22 @@ services:
   app:
     build:
       context: .
-      dockerfile: compose/voting/Dockerfile
+      dockerfile: compose/app/Dockerfile
     ports:
       - "8000:8000"
     restart: on-failure
     env_file: example.env
     command: uvicorn src.app:app --host 0.0.0.0 --port 8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fast_voting
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d

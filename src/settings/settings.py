@@ -1,16 +1,21 @@
+from pathlib import Path
 import os
 
-# Import settings
-from src.settings import container, local
 
-env = os.environ
-DEBUG = env.get('DEBUG')
+DEBUG = os.getenv('DEBUG', default=True)
 
-settings = local if not DEBUG else container
 
-# Assign variables
-DEBUG = settings.DEBUG
-HOST = settings.HOST
-PORT = settings.PORT
+ROOT_DIR = Path(os.getcwd())
 
-SECRET_KEY = settings.SECRET_KEY
+HOST = os.getenv('HOST', default='0.0.0.0')
+PORT = os.getenv('PORT', default=8000)
+
+DATABASE = {
+    'HOST': os.getenv('DB_HOST', default='localhost'),
+    'PORT': os.getenv('DB_PORT', default=5432),
+    'PASSWORD': os.getenv('DB_PASSWORD', default='postgres'),
+    'USER': os.getenv('DB_USER', default='postgres'),
+    'NAME': os.getenv('DB_NAME', default='fast_voting')
+}
+
+SECRET_KEY = os.getenv('SECRET_KEY', default='SECRET_KLMASFUIHNQEGYRN')
