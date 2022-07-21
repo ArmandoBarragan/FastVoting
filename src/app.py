@@ -7,12 +7,13 @@ from src.routes.groups import router as groups_router
 from src.settings.db import create_db_engine
 
 
-app = FastAPI()
-
 # Initialize database
 engine = create_db_engine()
 meta = MetaData()
+connection = engine.connect()
 meta.create_all(engine)
+
+app = FastAPI()
 
 
 # Add routers

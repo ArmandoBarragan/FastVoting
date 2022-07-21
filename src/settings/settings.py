@@ -11,7 +11,7 @@ HOST = os.getenv('HOST', default='0.0.0.0')
 PORT = os.getenv('PORT', default=8000)
 
 DATABASE = {
-    'HOST': os.getenv('DB_HOST', default='localhost'),
+    'HOST': os.getenv('DB_HOST', default='db'),
     'PORT': os.getenv('DB_PORT', default=5432),
     'PASSWORD': os.getenv('DB_PASSWORD', default='postgres'),
     'USER': os.getenv('DB_USER', default='postgres'),
