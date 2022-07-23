@@ -1,5 +1,6 @@
-from pathlib import Path
 import os
+from pathlib import Path
+from sqlalchemy.ext.declarative import declarative_base
 
 
 DEBUG = os.getenv('DEBUG', default=True)
@@ -9,6 +10,9 @@ ROOT_DIR = Path(os.getcwd())
 
 HOST = os.getenv('HOST', default='0.0.0.0')
 PORT = os.getenv('PORT', default=8000)
+
+
+Base = declarative_base()
 
 DATABASE = {
     'HOST': os.getenv('DB_HOST', default='db'),
